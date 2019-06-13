@@ -13,5 +13,6 @@ RUN apt-get update \
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
 WORKDIR /project/
+RUN npm i
 
 CMD ["/run.sh"]
