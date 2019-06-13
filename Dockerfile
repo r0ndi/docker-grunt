@@ -2,18 +2,12 @@ FROM library/node
 MAINTAINER Konrad Sądel <k.sadel@getprintbox.com>
 
 RUN apt-get update && apt-get -y install
-RUN apt-get clean && apt-get update && apt-get install -y locales
-RUN locale-gen en_US.UTF-8 && export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8
-RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends apt-utils \
-    curl \
-    gnupg \
-    nodejs
-RUN DEBIAN_FRONTEND=noninteractive npm install \
-    grunt -g \
-    grunt-cli -g
+RUN apt-get install -y python-pip
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g grunt -g
+RUN npm install -g grunt-cli -g
 
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
