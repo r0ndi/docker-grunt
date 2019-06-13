@@ -7,7 +7,10 @@ RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN apt-get install -y nodejs
 RUN npm install -g
-RUN npm i
+RUN npm install grunt -g
+RUN npm install grunt-cli -g
+RUN npm install grunt-sass -g
+RUN npm install grunt-contrib-uglify-es -g
 
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
