@@ -7,8 +7,10 @@ RUN apt-get update \
     gnupg \
     && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g grunt \
-    && npm install -g grunt-cli
+    && npm install grunt \
+    && npm install grunt-cli \
+    && npm install grunt-sass \
+    && npm install grunt-contrib-uglify-es
 
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
