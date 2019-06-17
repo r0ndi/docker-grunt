@@ -14,8 +14,9 @@ RUN apt-get update \
     && npm install grunt-contrib-uglify-es
 
 ADD run.sh /run.sh
-RUN chmod 755 /run.sh
+ADD build.sh /build.sh
+RUN chmod 755 /run.sh /build.sh
+RUN /build.sh
 WORKDIR /project/
-RUN npm i
 
 CMD ["/run.sh"]
